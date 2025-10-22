@@ -1,19 +1,7 @@
-function formatMessages(messages) {
-    return messages.map(msg => {
-        let text = msg.text || '';
-        text = text.replace(/\n+/g, '\n');
-
-        text = text.trim();
-
-        text = text.replace(/https?:\/\/\S+/g, '[link]');
-
-        text = text.replace(/@\w+/g, '[mention]');
-
-        return {
-            ...msg,
-            formattedText: text
-        };
-    });
+function formatMessages(msgObjects) {
+    if (!Array.isArray(msgObjects)) return [];
+    // normalize to array of plain text strings
+    return msgObjects.map(m => (typeof m === 'string' ? m : (m?.text || '')));
 }
 
 module.exports = { formatMessages };

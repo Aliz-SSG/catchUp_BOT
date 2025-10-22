@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-dotenv.config(); // loads the .env file into process.env
+dotenv.config(); 
 
 const telconf = {
     apiId: process.env.API_ID,
@@ -7,4 +7,7 @@ const telconf = {
     sessionPath: process.env.SESSION_PATH
 };
 
-module.exports = telconf;
+module.exports = {
+    apiId: process.env.API_ID || process.env.API_ID || null,
+    apiHash: process.env.API_HASH || process.env.API_HASH || null,
+    sessionPath: process.env.SESSION_PATH || process.env.SESSION_PATH || "./session.session"}
